@@ -14,7 +14,7 @@ One line per slide: the key idea. File names refer to `slides/`.
 
 ## Existing approaches
 9. `methods-overview` — Three families: adjoint method, neural operators, PINNs.
-10. `adjoint` — Scalar cartoon: the descent direction along the constraint F(u, θ) = 0 leads to where it is tangent to a contour of L_data(u). Accurate gradients, but requires deriving the adjoint and solving forward and adjoint equations at every step.
+10. `adjoint` — (builds) Scalar cartoon: contours of L_data(u) and the constraint F(u, θ) = 0; a point slides along the constraint to where it is tangent to a contour. Then: adjoint equation, ∇θ L_data = −⟨λ, ∂θ𝓛 u⟩; accurate, but needs forward and adjoint solves at every step.
 11. `neural-operator` — Learn the parameter-to-solution map θ ↦ u(·, θ).
 12. `neural-operator-training` — Trained on solution pairs and fast to evaluate, but inaccurate when the true θ is out of distribution.
 13. `pinn` — Represent u by a neural network; fit the data, solve the PDE, and infer parameters at once.
@@ -24,7 +24,7 @@ One line per slide: the key idea. File names refer to `slides/`.
 15. `bilo-animation` — (animated) Solutions for θ = 1, 2, 1/2 → the full solution operator u(x, θ) turns the problem into min L_data(θ), shown with gradient descent → restart: a **local** operator near θ⁽ᵏ⁾ is enough to get the descent direction, and it moves with the iterates.
 16. `bilo-local-loss` — Locally, r = 0 and ∇θ r = 0; train the local operator with residual + residual-gradient loss.
 17. `bilo-bilevel` — PDE-constrained optimization becomes a bilevel problem: upper level fits data, lower level fits the local operator.
-18. `algorithm` — Initialization (pre-train) at θ₀; Inference (fine-tune): the nested iterative scheme (struck through) is replaced by simultaneous gradient descent on θ (upper) and W (lower).
+18. `algorithm` — The nested iterative scheme (struck through) is replaced by simultaneous gradient descent on θ (upper) and W (lower). Pre-training at θ₀ is in the notes.
 19. `theory` — If L_LO < ε, the approximate gradient differs from the true hyper-gradient by O(ε).
 20. `demo` — Live demo: Physics-Informed Machine Learning Playground.
 
@@ -54,5 +54,9 @@ One line per slide: the key idea. File names refer to `slides/`.
 39. `sampling-function` — Sampling a function: B-BiLO posterior for D(x) from a 64-term KL expansion.
 40. `bbilo-summary` — Avoid sampling high-dimensional weights; stronger PDE constraint; efficient sampling with LoRA.
 
+## Ongoing work
+- `identifiability` — smFISH snapshots: identifiability of 𝓛u − γu + B = 0 depends on the source B (smooth vs point), the boundary condition, and the stochastic convention (Itô / Stratonovich / isothermal).
+
 ## Closing
 41. `thanks` — Thank you.
+42. `papers-qr` — QR codes linking to the BiLO (JCP) and Bayesian BiLO (Nature Communications) papers.

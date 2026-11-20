@@ -84,14 +84,16 @@
   .pinn-diagram .pbox { border:2px solid #111; background:#fff; display:flex; align-items:center; justify-content:center; box-sizing:border-box; }
 </style>
 ${diagram}
-<div class="frag" style="margin-top:14px; font-size:30px">
+<div style="margin-top:14px; font-size:30px">
   <p style="margin:0">Schematic of inferring the diffusion coefficient of the heat equation</p>
+  <div class="frag">
   <ul>
     <li>represent the solution to the PDE by a neural network</li>
     <li>mesh free, flexible loss function</li>
     <li>solve the PDE, fit the data, infer parameters at the same time</li>
     <li>For UQ, we sample \(\red{\theta}\) and \(\blue{W}\) (Bayesian Neural Network)</li>
   </ul>
+  </div>
 </div>
 <div class="cite">Raissi, M., Perdikaris, P., Karniadakis, G.E., 2019. Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations.</div>`,
   });

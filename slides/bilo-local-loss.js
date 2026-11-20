@@ -3,7 +3,7 @@ Deck.slide({
   title: 'Bilevel Local Operator Learning',
   html: String.raw`
 <ul>
-  <li>Only need the operator <u>locally</u>: \(u(x,\theta)\) solves the PDE in a neighborhood of <span style="white-space:nowrap">\(\theta\).</span><br>
+  <li>Only need the operator <u class="red">locally</u>: \(u(x,\theta)\) solves the PDE <span class="red">in a neighborhood</span> of <span style="white-space:nowrap">\(\theta\).</span><br>
     \(\Rightarrow\) For fixed \(\theta\), \(\ \blue{r(x,\theta) := F(D^k u,\dots,Du,\theta) = 0}\ \) and \(\ \red{\nabla_\theta r(x,\theta) = 0}\)</li>
 </ul>
 <div class="row frag" style="gap:20px">

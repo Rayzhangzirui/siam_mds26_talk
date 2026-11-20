@@ -1,8 +1,9 @@
-/* BiLO idea, animated in 8 steps (replaces PowerPoint slides 16–17).
+/* BiLO idea, animated in 9 steps (replaces PowerPoint slides 16–17).
  *
  *  1 one solution u(x; θ=1)          2 θ = 2, θ = 1/2 → more curves    3 rotate: θ becomes an axis
- *  4 surface u(x, θ)                 5 data + loss L_data(θ)           6 gradient descent with the full operator
- *  7 restart: local operator strip at θ^(k)                            8 iterate: θ^(k) moves, both strips move with it
+ *  4 surface u(x, θ)                 5 data on the surface             6 split: loss L_data(θ)
+ *  7 gradient descent with the full operator                           8 restart: local operator strip at θ^(k)
+ *  9 iterate: θ^(k) moves, both strips move with it
  *
  * Everything for this slide lives in this file. Tune the numbers in the "problem setup" and
  * "animation steps" blocks. Labels are KaTeX (via the overlay), the plots are drawn on a canvas.
@@ -47,21 +48,22 @@
     [{ dur: 900, to: { curvesN: 2 } }, { dur: 900, to: { curvesN: 3 } }],
     [{ dur: 2000, to: { rot: 1, thetaAxis: 1 } }],
     [{ dur: 1300, to: { surf: 1, curvesAlpha: 0 } }],
-    [{ dur: 1000, to: { split: 1, data: 1 } }, { dur: 1400, to: { lossDraw: 1 } }],
+    [{ dur: 800, to: { data: 1 } }],
+    [{ dur: 1000, to: { split: 1 } }, { dur: 1400, to: { lossDraw: 1 } }],
     [{ dur: 700, to: { pt: 1 } }, { dur: 500, to: { grad: 1 } }, ...iterate()],
     [{ dur: 500, to: { pt: 0, grad: 0 } }, { dur: 1000, set: { thetaK: ITERS[0], iter: 0 }, to: { pt: 1, strip: 1 } }, { dur: 600, to: { grad: 1 } }],
     iterate(),
   ];
   const FULL_OP = String.raw`<span class="gray"><b>Full PDE solution operator \(u(x,\theta)\)</b></span><br>solves \(F(D^k u,\dots,u,\theta)=0\) for <u>all</u> \(\theta\)`;
   const CAP_L = [
-    String.raw`Fix a parameter \(\theta\). Solving the PDE gives one solution \(u(x;\theta)\)`,
+    String.raw`Fix a parameter \(\theta\). Solving the PDE gives one solution \(u(x)\)`,
     String.raw`Each value of \(\theta\) gives a different solution`,
     String.raw`Treat \(\theta\) as a new axis`,
-    FULL_OP, FULL_OP, FULL_OP,
+    FULL_OP, FULL_OP, FULL_OP, FULL_OP,
     String.raw`<span class="blue"><b>Local operator \(\uLO(x;\theta)\)</b></span> approximates the solution<br><u>in a neighborhood</u> of \(\theta^{(k)}\)`,
     String.raw`<span class="blue"><b>Local operator \(\uLO(x;\theta)\)</b></span> approximates the solution<br><u>in a neighborhood</u> of \(\theta^{(k)}\)`,
   ];
-  const CAP_R = ['', '', '', '',
+  const CAP_R = ['', '', '', '', '',
     String.raw`The full operator turns the PDE-constrained problem into \(\min_\theta \Ldata(\theta)\)`,
     String.raw`The full operator turns the PDE-constrained problem into \(\min_\theta \Ldata(\theta)\)`,
     String.raw`The <span class="blue"><b>local operator</b></span> suffices to compute the descent direction \(-\nabla_\theta \Ldata(\theta^{(k)})\)`,
