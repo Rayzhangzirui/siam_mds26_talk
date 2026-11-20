@@ -12,11 +12,6 @@ Deck.slide({
     </ul>
   </li>
   <li><b>Bilevel Local Operator Learning (BiLO)</b> for <b>PDE-constrained Optimization</b>
-    <ul>
-      <li>Idea and Algorithm</li>
-      <li>Examples: inferring rate from gene snapshot, inferring tumor infiltration</li>
-      <li>Inferring unknown function</li>
-    </ul>
   </li>
   <li><b>Bayesian BiLO</b> for <b>Uncertainty Quantification</b></li>
 </ul>`,
